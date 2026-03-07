@@ -1,17 +1,47 @@
-<!-- Une page Projects Ive worked On -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Victor Haye - Linktree</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Vimeo Player API -->
+    <script src="https://player.vimeo.com/api/player.js" crossorigin="anonymous"></script>
+    <!-- YouTube Player API -->
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var youtubePlayer;
+        function onYouTubeIframeAPIReady() {
+            youtubePlayer = new YT.Player('youtubePlayer', {
+                height: '300',
+                width: '100%',
+                videoId: '2uHHUjhkZUk',
+                playerVars: {
+                    autoplay: 0,
+                    controls: 1,
+                    enablejsapi: 1,
+                    origin: window.location.origin
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+    </script>
     <style>
         body {
-            font-family: 'Belanosima', sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f5f5f5;
-            background-image: url('BG.png');
+            background-image: url('your-background-image.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -99,7 +129,7 @@
         }
         .project-box iframe, .vimeo-box iframe {
             width: 100%;
-            height: 200px;
+            height: 300px;
             border-radius: 5px;
             margin: 10px 0;
         }
@@ -134,6 +164,12 @@
             margin: 0;
             color: #333;
         }
+        #youtubePlayer {
+            width: 100%;
+            height: 300px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -147,14 +183,15 @@
             <p>Here you can find my professional profiles, creative work, and game development projects. Feel free to reach out!</p>
         </div>
 
-        <a href="https://www.linkedin.com/in/victor-haye/" class="button linkedin" target="_blank">LinkedIn</a>
-        <button class="button vimeo" onclick="showVimeoContent()">3D Animation</button>
-        <button class="button game-dev" onclick="showProjectContent()">Game Dev</button>
-        <button class="button previs" onclick="showPrevisContent()">Previsualisation</button>
+        <a href="https://www.linkedin.com/in/vhaye" class="button linkedin" target="_blank">LinkedIn</a>
+        <button class="button vimeo" onclick="showVimeoContent()">Vimeo</button>
+        <button class="button game-dev" onclick="showProjectContent()">Game Dev Projects</button>
+        <button class="button previs" onclick="showPrevisContent()">Previs</button>
+        <a href="https://instagram.com/vhaye" class="button instagram" target="_blank">Instagram</a>
 
-        <a href="mailto:haye.victor.pro@gmail.com" class="email">
+        <a href="mailto:your-email@example.com" class="email">
             <i class="fas fa-envelope"></i>
-           haye.victor.pro@gmail.com
+            your-email@example.com
         </a>
     </div>
 
@@ -163,14 +200,8 @@
         <button class="return-button" onclick="showMainContent()">
             <i class="fas fa-arrow-left"></i>
         </button>
-        <h2>Animation Reel</h2>
-            <iframe
-                src="https://player.vimeo.com/video/339385030?autoplay=1&muted="
-                width="100%"
-                height="400"
-                frameborder="0"
-                allowfullscreen>
-            </iframe>
+        <h2>Vimeo</h2>
+        <iframe id="vimeoPlayer" src="https://player.vimeo.com/video/YOUR_VIMEO_ID" width="100%" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
 
     <!-- Project Content -->
@@ -179,8 +210,8 @@
             <i class="fas fa-arrow-left"></i>
         </button>
         <h2>Game Dev Projects</h2>
-        <iframe src="https://www.youtube.com/embed/2uHHUjhkZUk" allowfullscreen></iframe>
-        <a href="https://docs.google.com/presentation/d/1VRqg8zvFi4sPiZPvjUFQUliHsTsUKb0FhHDBGDkLDyM" target="_blank">View Pitch Deck</a>
+        <div id="youtubePlayer"></div>
+        <a href="https://docs.google.com/presentation/d/YOUR_PRESENTATION_ID" target="_blank">View Pitch Deck</a>
     </div>
 
     <!-- Previs Content -->
@@ -206,32 +237,70 @@
     </div>
 
     <script>
+        // Global player variables
+        var vimeoPlayer;
+        var youtubePlayer;
+        var youtubeReady = false;
+
+        // Initialize Vimeo Player
+        function initVimeoPlayer() {
+            vimeoPlayer = new Vimeo.Player(document.getElementById('vimeoPlayer'));
+        }
+
+        // Pause Vimeo Player
+        function pauseVimeoPlayer() {
+            if (vimeoPlayer) {
+                vimeoPlayer.pause();
+            }
+        }
+
+        // Pause YouTube Player (with error handling)
+        function pauseYouTubePlayer() {
+            if (youtubeReady && youtubePlayer && typeof youtubePlayer.pauseVideo === 'function') {
+                youtubePlayer.pauseVideo();
+            }
+        }
+
+        // Show Vimeo Content
         function showVimeoContent() {
             document.getElementById("mainContent").style.display = "none";
-            document.getElementById("vimeoContent").style.display = "block";
             document.getElementById("projectContent").style.display = "none";
             document.getElementById("previsContent").style.display = "none";
+            pauseYouTubePlayer();
+            document.getElementById("vimeoContent").style.display = "block";
+            initVimeoPlayer();
         }
 
+        // Show Project Content
         function showProjectContent() {
             document.getElementById("mainContent").style.display = "none";
-            document.getElementById("projectContent").style.display = "block";
             document.getElementById("vimeoContent").style.display = "none";
             document.getElementById("previsContent").style.display = "none";
+            pauseVimeoPlayer();
+            document.getElementById("projectContent").style.display = "block";
+            if (!youtubeReady && typeof YT !== 'undefined' && YT.Player) {
+                onYouTubeIframeAPIReady();
+            }
         }
 
+        // Show Previs Content
         function showPrevisContent() {
             document.getElementById("mainContent").style.display = "none";
-            document.getElementById("previsContent").style.display = "block";
             document.getElementById("vimeoContent").style.display = "none";
             document.getElementById("projectContent").style.display = "none";
+            pauseVimeoPlayer();
+            pauseYouTubePlayer();
+            document.getElementById("previsContent").style.display = "block";
         }
 
+        // Show Main Content
         function showMainContent() {
-            document.getElementById("mainContent").style.display = "block";
             document.getElementById("vimeoContent").style.display = "none";
             document.getElementById("projectContent").style.display = "none";
             document.getElementById("previsContent").style.display = "none";
+            pauseVimeoPlayer();
+            pauseYouTubePlayer();
+            document.getElementById("mainContent").style.display = "block";
         }
     </script>
 </body>
