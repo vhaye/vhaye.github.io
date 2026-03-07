@@ -147,6 +147,28 @@
             background-color: #e28801;
             
         }
+        .default-icon{
+            filter:  brightness(0) invert(1);
+            height: 30px;
+            margin-right: 8px; 
+            align-items: center;
+        }
+        .button:hover .default-icon {
+            display: none;
+        }
+
+        .hover-icon {
+            display:none;
+        }
+
+        .button:hover .hover-icon {
+            display: inline-block;
+            height: 32px;
+            margin-right: 8px; 
+            filter:  brightness(0) invert(1);
+            align-items: center;
+            transition: transform 0.1s ease;
+        }
         .button.pitch-deck:hover{
             background-color: #c28c18;
         }
@@ -171,7 +193,7 @@
             filter:  invert(1);
             transition: transform 0.1s ease;
         }
-        .email:hover .mail-icon {
+        .email:hover .mail-icon .button:hover .hover-icon{
             transform: scale(1.5);
         }
         .project-content, .previs-content, .vimeo-content {
@@ -256,15 +278,19 @@
 
         <a href="https://www.linkedin.com/in/victor-haye" class="button linkedin" target="_blank">LinkedIn</a>
         <button class="button previs" onclick="showPrevisContent()">
-            <img src="Assets/camera_roll_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Film Icon" class="button-icon">
+
+            <img src="Assets/ReelGif/camera_roll.gif" alt="Previs GIF" class="hover-icon" >
+            <img src="Assets/camera_roll_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Film Icon" class="default-icon">
             Visualisation
         </button>
         <button class="button vimeo" onclick="showVimeoContent()">
-            <img src="Assets/directions_run_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Run Icon" class="button-icon">
+            <img src="Assets/ReelGif/camera_roll.gif" alt="Anim GIF" class="hover-icon" >
+            <img src="Assets/directions_run_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Run Icon" class="default-icon">
             3D Animation
         </button>
         <button class="button game-dev" onclick="showProjectContent()" >
-            <img src="Assets/stadia_controller_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Game Icon" class="button-icon">
+            <img src="Assets/ReelGif/stadia_controller.gif" alt="Game GIF" class="hover-icon" >
+            <img src="Assets/stadia_controller_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Game Icon" class="default-icon">
             Game Development
         </button>
         
@@ -297,7 +323,7 @@
             <i class="fas fa-arrow-left"></i>
         </button>
         <h2>Visualisation</h2>
-        <a href="https://www.imdb.com/name/nm15758833/" class="button pitch-deck" target="_blank">IMBD</a>
+        <a href="https://www.imdb.com/name/nm15758833/" class="button pitch-deck" target="_blank">IMDb</a>
         <div class ="separator"></div>
         <!-- <h4>Past Projects</h4> -->
         <div class="previs-list">
