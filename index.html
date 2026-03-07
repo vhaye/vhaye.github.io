@@ -16,6 +16,8 @@
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         var youtubePlayer;
+        var youtubeReady = false;
+
         function onYouTubeIframeAPIReady() {
             youtubePlayer = new YT.Player('youtubePlayer', {
                 height: '300',
@@ -31,10 +33,17 @@
                     'onReady': onPlayerReady
                 }
             });
+            youtubeReady = true;
         }
 
         function onPlayerReady(event) {
-            event.target.playVideo();
+            // Player is ready
+        }
+
+        function pauseYouTubePlayer() {
+            if (youtubeReady && youtubePlayer && typeof youtubePlayer.pauseVideo === 'function') {
+                youtubePlayer.pauseVideo();
+            }
         }
     </script>
     <style>
@@ -254,7 +263,7 @@
             }
         }
 
-        // Pause YouTube Player (with error handling)
+        // Pause YouTube Player
         function pauseYouTubePlayer() {
             if (youtubeReady && youtubePlayer && typeof youtubePlayer.pauseVideo === 'function') {
                 youtubePlayer.pauseVideo();
