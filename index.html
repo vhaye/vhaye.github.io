@@ -367,6 +367,7 @@
             pauseYouTubePlayer();
             document.getElementById("vimeoContent").style.display = "block";
             initVimeoPlayer();
+            history.pushState({ page: "vimeo" }, "", "#vimeo");
         }
 
         // Show Project Content
@@ -379,6 +380,7 @@
             if (!youtubeReady && typeof YT !== 'undefined' && YT.Player) {
                 onYouTubeIframeAPIReady();
             }
+            history.pushState({ page: "project" }, "", "#project");
         }
 
         // Show Previs Content
@@ -389,6 +391,7 @@
             pauseVimeoPlayer();
             pauseYouTubePlayer();
             document.getElementById("previsContent").style.display = "block";
+            history.pushState({ page: "previs" }, "", "#previs");
         }
 
         // Show Main Content
@@ -399,7 +402,12 @@
             pauseVimeoPlayer();
             pauseYouTubePlayer();
             document.getElementById("mainContent").style.display = "block";
+            history.pushState({ page: "main" }, "", "#main");
         }
+        // Handle browser back button
+        window.addEventListener('popstate', function(event) {
+            showMainContent();
+        });
     </script>
 </body>
 </html>
