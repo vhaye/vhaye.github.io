@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>Victor Haye - Linktree</title>
+    <title>Victor Hayé - Links</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Vimeo Player API -->
     <script src="https://player.vimeo.com/api/player.js" crossorigin="anonymous"></script>
@@ -50,7 +50,7 @@
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f5f5f5;
-            background-image: url('your-background-image.jpg');
+            background-image: url('BG.PNG');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -89,16 +89,18 @@
             color: #666;
         }
         .intro-box {
+            font-style: italic;
             background-color: #f9f9f9;
             border-radius: 8px;
             padding: 15px;
             margin: 20px 0;
-            text-align: left;
             font-size: 14px;
             line-height: 1.5;
+            text-align: center;
         }
-        .button {
+        .button, a.button {
             display: block;
+            font-size: medium;
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -110,8 +112,10 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
+            text-align: center;
+            box-sizing: border-box;
         }
-        .button:hover {
+        .button:hover, a.button:hover {
             background-color: #005588;
         }
         .linkedin { background-color: #0077b5; }
@@ -168,7 +172,13 @@
             border-radius: 5px;
             margin-bottom: 5px;
         }
-        .previs-item p {
+        .previs-item date {
+            font-size: 19px;
+            margin: 0;
+            color: #333;
+            font-weight: bolder;
+        }
+        .previs-item titre {
             font-size: 14px;
             margin: 0;
             color: #333;
@@ -184,23 +194,22 @@
 <body>
     <!-- Main Content -->
     <div class="container" id="mainContent">
-        <img src="your-profile-pic.jpg" alt="Victor Haye" class="profile-pic">
-        <h1>Victor Haye</h1>
-        <p>Welcome to my Linktree! Connect with me on social media or check out my work.</p>
+        <img src="photo.jpg" alt="Victor Hayé" class="profile-pic">
+        <h1>Victor Hayé</h1>
+        <p>Lead Previs Artist</p>
 
-        <div class="intro-box">
-            <p>Here you can find my professional profiles, creative work, and game development projects. Feel free to reach out!</p>
+        <div class="intro-box" >
+            <p>Passions include playing and making video games as well as watching and making films.</p>
         </div>
 
-        <a href="https://www.linkedin.com/in/vhaye" class="button linkedin" target="_blank">LinkedIn</a>
-        <button class="button vimeo" onclick="showVimeoContent()">Vimeo</button>
+        <a href="https://www.linkedin.com/in/victor-haye" class="button linkedin" target="_blank">LinkedIn</a>
+        <button class="button previs" onclick="showPrevisContent()">Previsualisation</button>
+        <button class="button vimeo" onclick="showVimeoContent()">3D Animation</button>
         <button class="button game-dev" onclick="showProjectContent()">Game Dev Projects</button>
-        <button class="button previs" onclick="showPrevisContent()">Previs</button>
-        <a href="https://instagram.com/vhaye" class="button instagram" target="_blank">Instagram</a>
 
-        <a href="mailto:your-email@example.com" class="email">
+        <a href="mailto:haye.victor.pro@gmail.com" class="email">
             <i class="fas fa-envelope"></i>
-            your-email@example.com
+            haye.victor.pro@gmail.com
         </a>
     </div>
 
@@ -210,7 +219,7 @@
             <i class="fas fa-arrow-left"></i>
         </button>
         <h2>Vimeo</h2>
-        <iframe id="vimeoPlayer" src="https://player.vimeo.com/video/YOUR_VIMEO_ID" width="100%" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <iframe id="vimeoPlayer" src="https://player.vimeo.com/video/339385030" width="100%" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
 
     <!-- Project Content -->
@@ -220,7 +229,7 @@
         </button>
         <h2>Game Dev Projects</h2>
         <div id="youtubePlayer"></div>
-        <a href="https://docs.google.com/presentation/d/YOUR_PRESENTATION_ID" target="_blank">View Pitch Deck</a>
+        <a href="https://docs.google.com/presentation/d/1VRqg8zvFi4sPiZPvjUFQUliHsTsUKb0FhHDBGDkLDyM" target="_blank">View Pitch Deck</a>
     </div>
 
     <!-- Previs Content -->
@@ -228,19 +237,28 @@
         <button class="return-button" onclick="showMainContent()">
             <i class="fas fa-arrow-left"></i>
         </button>
-        <h2>Previs</h2>
+        <h2>Previsualisation</h2>
         <div class="previs-list">
             <div class="previs-item">
-                <img src="previs-image-1.jpg" alt="Previs 1">
-                <p>Project Alpha</p>
+                <img src="Movies/ProjectHailMary.JPG" alt="Previs 2">
             </div>
             <div class="previs-item">
-                <img src="previs-image-2.jpg" alt="Previs 2">
-                <p>Project Beta</p>
+                <img src="Movies/how-to-train-your-dragon-2025.jpg" alt="Previs 2">
             </div>
             <div class="previs-item">
-                <img src="previs-image-3.jpg" alt="Previs 3">
-                <p>Project Gamma</p>
+                <img src="Movies/wicked.jpg" alt="Previs 2">
+            </div>
+            <div class="previs-item">
+                <img src="Movies/Barbie.jpg" alt="Previs 2">
+            </div>
+            <div class="previs-item">
+                <img src="Movies/FoundationS2.JPG" alt="Previs 2">
+            </div>
+            <div class="previs-item">
+                <img src="Movies/LittleMermaid.PNG" alt="Previs 2">
+            </div>
+            <div class="previs-item">
+                <img src="Movies/Venom2.PNG" alt="Venom 2">
             </div>
         </div>
     </div>
