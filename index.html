@@ -467,9 +467,10 @@
             document.getElementById("mainContent").style.display = "none";
             document.getElementById("projectContent").style.display = "none";
             document.getElementById("previsContent").style.display = "none";
-            pauseYtRingworldTrailer1();
             document.getElementById("vimeoContent").style.display = "block";
             initVimeoPlayer();
+            pauseYtRingworldTrailer1();
+            pausePrevisReel();
             history.pushState({ page: "vimeo" }, "", "#vimeo");
         }
 
@@ -481,6 +482,7 @@
             pauseVimeoPlayer();
             document.getElementById("projectContent").style.display = "block";
             initYtRingworldTrailer1();
+            pausePrevisReel();
             
             history.pushState({ page: "project" }, "", "#project");
         }
@@ -492,6 +494,7 @@
             document.getElementById("projectContent").style.display = "none";
             pauseVimeoPlayer();
             initYtPlayerPrevisReel();
+            pauseYtRingworldTrailer1();
             document.getElementById("previsContent").style.display = "block";
             history.pushState({ page: "previs" }, "", "#previs");
         }
@@ -507,7 +510,6 @@
         }
         // Handle browser back button
         window.addEventListener('popstate', function(event) {
-            onYouTubeIframeAPIReady();
             showMainContent();
         });
     </script>
