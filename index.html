@@ -16,14 +16,27 @@
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        var youtubePlayer;
         var youtubeReady = false;
 
         function onYouTubeIframeAPIReady() {
-            youtubePlayer = new YT.Player('youtubePlayer', {
+            YtRingworldTrailer1 = new YT.Player('YtRingworldTrailer1', {
                 height: '300',
                 width: '100%',
                 videoId: '2uHHUjhkZUk',
+                playerVars: {
+                    autoplay: 0,
+                    controls: 1,
+                    enablejsapi: 1,
+                    origin: window.location.origin
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+            YtPlayerPrevisReel = new YT.Player('YtRingworldTrailer1', {
+                height: '300',
+                width: '100%',
+                videoId: 'znXdagm0Sn4',
                 playerVars: {
                     autoplay: 0,
                     controls: 1,
@@ -41,11 +54,6 @@
             // Player is ready
         }
 
-        function pauseYouTubePlayer() {
-            if (youtubeReady && youtubePlayer && typeof youtubePlayer.pauseVideo === 'function') {
-                youtubePlayer.pauseVideo();
-            }
-        }
     </script>
     <style>
         body {
@@ -221,7 +229,6 @@
             margin-right: 8px; 
             filter:  brightness(0) invert(1);
             align-items: center;
-            transition: transform 0.1s ease;
         }
         .button.pitch-deck:hover{
             background-color: #c28c18;
@@ -247,7 +254,7 @@
             filter:  invert(1);
             transition: transform 0.1s ease;
         }
-        .email:hover .mail-icon .button:hover .hover-icon{
+        .email:hover .mail-icon {
             transform: scale(1.5);
         }
         
@@ -373,18 +380,20 @@
         <button class="return-button" onclick="showMainContent()">
             <i class="fas fa-arrow-left"></i>
         </button>
-        <h2>Games</h2>
-        <div class="intro-box"> I am a solo-dev in my spare time. Video games are the most accessible way for me to give life to these stories and experiences.</div>
         
         <div class="game_header">
                 <div class ="separator"></div>
-                <h3>Ringworld Designer</h3>
+                <h2>Ringworld Designer</h2>
                 <div class ="separator"></div>
         </div>
         <div class="desc-box"> I am looking for funding in order to pay artists help me create assets for this game. <br> Please have a look at the pitch deck if you're interested.<br>Contact me for further information.</div>
         <a href="https://docs.google.com/presentation/d/1VRqg8zvFi4sPiZPvjUFQUliHsTsUKb0FhHDBGDkLDyM" class="button pitch-deck" target="_blank">View Pitch Deck</a>
-        <div id="youtubePlayer"></div>
+        <div id="YtRingworldTrailer1"></div>
         <div class="game-desc-box"> A single player adjacency and domino-based puzzle game, where you build a ringworld and shape its society in order to reach the highest real estate value.</div>
+        <!--Footer-->
+        <div class ="separator"></div>
+        <div class="intro-box"> I am a solo-dev in my spare time. Video games are the most accessible way for me to give life to these stories and experiences.</div>
+        
     </div>
 
     <!-- Previs Content -->
@@ -434,7 +443,8 @@
     <script>
         // Global player variables
         var vimeoPlayer;
-        var youtubePlayer;
+        var YtRingworldTrailer1;
+        var YtPlayerPrevisReel;
         var youtubeReady = false;
 
         // Initialize Vimeo Player
@@ -450,10 +460,12 @@
         }
 
         // Pause YouTube Player
-        function pauseYouTubePlayer() {
-            if (youtubeReady && youtubePlayer && typeof youtubePlayer.pauseVideo === 'function') {
-                youtubePlayer.pauseVideo();
-            }
+        function pauseYtRingworldTrailer1() {
+                YtRingworldTrailer1.pauseVideo();
+            
+        }
+        function pausePrevisReel() {
+                YtPlayerPrevisReel.pauseVideo();
         }
 
         // Show Vimeo Content
@@ -461,7 +473,7 @@
             document.getElementById("mainContent").style.display = "none";
             document.getElementById("projectContent").style.display = "none";
             document.getElementById("previsContent").style.display = "none";
-            pauseYouTubePlayer();
+            pauseYtRingworldTrailer1();
             document.getElementById("vimeoContent").style.display = "block";
             initVimeoPlayer();
             history.pushState({ page: "vimeo" }, "", "#vimeo");
@@ -474,9 +486,8 @@
             document.getElementById("previsContent").style.display = "none";
             pauseVimeoPlayer();
             document.getElementById("projectContent").style.display = "block";
-            if (!youtubeReady && typeof YT !== 'undefined' && YT.Player) {
-                onYouTubeIframeAPIReady();
-            }
+            onYouTubeIframeAPIReady();
+            
             history.pushState({ page: "project" }, "", "#project");
         }
 
@@ -486,7 +497,6 @@
             document.getElementById("vimeoContent").style.display = "none";
             document.getElementById("projectContent").style.display = "none";
             pauseVimeoPlayer();
-            pauseYouTubePlayer();
             document.getElementById("previsContent").style.display = "block";
             history.pushState({ page: "previs" }, "", "#previs");
         }
@@ -497,7 +507,6 @@
             document.getElementById("projectContent").style.display = "none";
             document.getElementById("previsContent").style.display = "none";
             pauseVimeoPlayer();
-            pauseYouTubePlayer();
             document.getElementById("mainContent").style.display = "block";
             history.pushState({ page: "main" }, "", "#main");
         }
