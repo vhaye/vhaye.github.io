@@ -423,30 +423,35 @@
         var YtPlayerPrevisReel;
 
         function initYtRingworldTrailer1() {
-            YtRingworldTrailer1 = new YT.Player('YtRingworldTrailer1', {
-                height: '300',
-                width: '100%',
-                videoId: '2uHHUjhkZUk',
-                playerVars: {
-                    autoplay: 0,
-                    controls: 1,
-                    enablejsapi: 1,
-                    origin: window.location.origin
-                },
-            });
+            if (!YtRingworldTrailer1) {
+                YtRingworldTrailer1 = new YT.Player('YtRingworldTrailer1', {
+                    height: '300',
+                    width: '100%',
+                    videoId: '2uHHUjhkZUk',
+                    playerVars: {
+                        autoplay: 0,
+                        controls: 1,
+                        enablejsapi: 1,
+                        origin: window.location.origin
+                    },
+                });
+            }
         }
         function initYtPlayerPrevisReel() {
-            YtPlayerPrevisReel = new YT.Player('YtPlayerPrevisReel', {
-                height: '300',
-                width: '100%',
-                videoId: 'znXdagm0Sn4',
-                playerVars: {
-                    autoplay: 0,
-                    controls: 1,
-                    enablejsapi: 1,
-                    origin: window.location.origin
-                },
-            });
+            if (!YtPlayerPrevisReel) {
+
+                YtPlayerPrevisReel = new YT.Player('YtPlayerPrevisReel', {
+                    height: '300',
+                    width: '100%',
+                    videoId: 'znXdagm0Sn4',
+                    playerVars: {
+                        autoplay: 0,
+                        controls: 1,
+                        enablejsapi: 1,
+                        origin: window.location.origin
+                    },
+                });
+            }
         }
 
         // Pause YouTube Player
