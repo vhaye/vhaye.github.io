@@ -103,6 +103,60 @@
             line-height: 1.5;
             text-align: center;
         }
+        .game-desc-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            font-style: italic;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 0px 0;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .desc-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            background-color: #e7e7e7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.1;
+            text-align: center;
+        }
+        .game_header {
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically (optional) */
+            gap: 10px; /* Space between items */
+            margin: 20px 0; /* Space above and below the box */
+            margin-bottom: 5px;
+        }
+        .horizontal-box {
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically (optional) */
+            gap: 20px; /* Space between items */
+            margin: 20px 0; /* Space above and below the box */
+            padding: 10px; /* Internal spacing of the box */
+            background-color: #f5f5f5; /* Optional: background color */
+            border-radius: 8px; /* Optional: rounded corners */
+        }
+
+        .box-item {
+            flex: 1; /* Allow items to grow equally */
+            text-align: center; /* Center text inside each item */
+            padding: 10px; /* Internal spacing of each item */
+            background-color: white; /* Optional: background color */
+            border-radius: 5px; /* Optional: rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+        }
         .button, a.button {
             display: flex;
             font-size: medium;
@@ -196,8 +250,16 @@
         .email:hover .mail-icon .button:hover .hover-icon{
             transform: scale(1.5);
         }
+        
         .project-content, .previs-content, .vimeo-content {
             display: none;
+        }
+        .project-content h2 {
+            margin-bottom: 10px; /* Space below the heading */
+        }
+        .project-content a {
+            margin-bottom: 0px; 
+            margin-top: 0px;
         }
         .project-box iframe, .vimeo-box iframe {
             width: 100%;
@@ -284,7 +346,7 @@
             Visualisation
         </button>
         <button class="button vimeo" onclick="showVimeoContent()">
-            <img src="Assets/ReelGif/camera_roll.gif" alt="Anim GIF" class="hover-icon" >
+            <img src="Assets/ReelGif/directions_run.gif" alt="Anim GIF" class="hover-icon" >
             <img src="Assets/directions_run_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Run Icon" class="default-icon">
             3D Animation
         </button>
@@ -311,10 +373,18 @@
         <button class="return-button" onclick="showMainContent()">
             <i class="fas fa-arrow-left"></i>
         </button>
-        <h2>Ringworld Designer</h2>
-        <div class="intro-box"> A single player adjacency and domino-based puzzle game, where you build a ringworld and shape its society in order to reach the highest real estate value.</div>
-        <div id="youtubePlayer"></div>
+        <h2>Games</h2>
+        <div class="intro-box"> I am a solo-dev in my spare time. Video games are the most accessible way for me to give life to these stories and experiences.</div>
+        
+        <div class="game_header">
+                <div class ="separator"></div>
+                <h3>Ringworld Designer</h3>
+                <div class ="separator"></div>
+        </div>
+        <div class="desc-box"> I am looking for funding in order to pay artists help me create assets for this game. <br> Please have a look at the pitch deck if you're interested.<br>Contact me for further information.</div>
         <a href="https://docs.google.com/presentation/d/1VRqg8zvFi4sPiZPvjUFQUliHsTsUKb0FhHDBGDkLDyM" class="button pitch-deck" target="_blank">View Pitch Deck</a>
+        <div id="youtubePlayer"></div>
+        <div class="game-desc-box"> A single player adjacency and domino-based puzzle game, where you build a ringworld and shape its society in order to reach the highest real estate value.</div>
     </div>
 
     <!-- Previs Content -->
@@ -322,7 +392,7 @@
         <button class="return-button" onclick="showMainContent()">
             <i class="fas fa-arrow-left"></i>
         </button>
-        <h2>Visualisation</h2>
+        <h2>Previs - Techvis - Postvis</h2>
         <a href="https://www.imdb.com/name/nm15758833/" class="button pitch-deck" target="_blank">IMDb</a>
         <div class ="separator"></div>
         <!-- <h4>Past Projects</h4> -->
